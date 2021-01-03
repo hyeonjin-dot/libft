@@ -6,7 +6,7 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 20:05:05 by hyejung           #+#    #+#             */
-/*   Updated: 2020/12/28 20:11:10 by hyejung          ###   ########.fr       */
+/*   Updated: 2021/01/01 18:29:26 by jeonghyeo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 void	ft_putchar_fd(char c, int fd)
 {
 	if (fd < 0)
-		return (0);
+		return ;
 	write(fd, &c, 1);
 }

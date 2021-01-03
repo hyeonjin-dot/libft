@@ -6,7 +6,7 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 18:13:59 by hyejung           #+#    #+#             */
-/*   Updated: 2020/12/28 19:26:17 by hyejung          ###   ########.fr       */
+/*   Updated: 2021/01/01 18:29:02 by jeonghyeo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*ft_itoa(int n)
 	minus = (n < 0 ? -1 : 1);
 	i = check(n);
 	new = (char*)malloc(sizeof(char) * i);
-	if (new == '\0')
+	if (new == NULL)
 		return (0);
 	new[i] = '\0';
 	if (minus < 0)

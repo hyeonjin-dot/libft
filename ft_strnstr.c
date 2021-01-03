@@ -6,7 +6,7 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 17:44:01 by hyejung           #+#    #+#             */
-/*   Updated: 2020/12/23 18:11:02 by hyejung          ###   ########.fr       */
+/*   Updated: 2021/01/01 18:30:11 by jeonghyeo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strnstr(const char *big, const char *lit, size_t len)
 
 	i = 0;
 	k = 0;
-	if (lit == '\0')
+	if (lit == NULL)
 		return ((char*)big);
 	while ((char)lit[k] != '\0')
 		k++;

@@ -6,7 +6,7 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 19:40:31 by hyejung           #+#    #+#             */
-/*   Updated: 2020/12/25 19:54:37 by hyejung          ###   ########.fr       */
+/*   Updated: 2021/01/01 18:27:53 by jeonghyeo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strdup(const char *str)
 	i = 0;
 	str_len = ft_strlen(str);
 	new = (char*)malloc(sizeof(char) * (str_len + 1));
-	if (new == '\0')
+	if (new == NULL)
 		return (0);
 	while (i < str_len)
 	{

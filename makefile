@@ -6,7 +6,7 @@
 #    By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/30 15:52:06 by hyejung           #+#    #+#              #
-#    Updated: 2021/01/01 18:17:00 by jeonghyeo        ###   ########.fr        #
+#    Updated: 2021/01/04 00:06:54 by jeonghyeo        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ SRCS	=	ft_memset.c\
 			ft_memmove.c\
 			ft_memchr.c\
 			ft_strlen.c\
-			ft_strcpy.c\
-			ft_strcat.c\
+			ft_strlcpy.c\
+			ft_strlcat.c\
 			ft_strchr.c\
 			ft_strrchr.c\
 			ft_strnstr.c\
@@ -49,7 +49,7 @@ SRCS	=	ft_memset.c\
 			ft_putendl_fd.c\
 			ft_putnbr_fd.c
 
-SRCS_B	=	ft_lstnew.c\
+SRCS_b	=	ft_lstnew.c\
 			ft_lstadd_front.c\
 			ft_lstsize.c\
 			ft_lstlast.c\
@@ -61,22 +61,25 @@ SRCS_B	=	ft_lstnew.c\
 
 OBJS	=	${SRCS:.c=.o}
 
+OBJS_B	=	${SRCS_B:.c=.o}
+
+all		:	${NAME}
+
 ${NAME}	:	${OBJS}
-	${CC} -o ${NAME} ${OBJS}
+	ar rcs ${NAME} ${OBJS}
 
 .c.o	:
-	${CC} ${FCLAGS} -c $< -o ${<:.c=.o}
-
-all		:
-	$(NAME)
+	${CC} ${CFLAGS} -c  $< -o ${<:.c=.o}
 
 clean	:
-	${RM} .o
-	${RM} $(NAME)
+	${RM} ${OBJS}
 
 fclean	:	clean
 	${RM} ${NAME}
 
-re	:	fclean all
+re		:	fclean all
 
-.PHONY	:	all clean fclean re
+bonus	:	${OBJS} ${OBJS_B}
+	${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${OBJS_B}
+
+.PHONY	:	all clean fclean re bonus

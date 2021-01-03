@@ -6,7 +6,7 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 20:17:03 by hyejung           #+#    #+#             */
-/*   Updated: 2020/12/25 20:52:42 by hyejung          ###   ########.fr       */
+/*   Updated: 2021/01/03 21:51:32 by jeonghyeo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (0);
 	new_len = ft_strlen(s + start);
 	new = (char*)malloc(new_len + 1);
-	if (new == '\0')
+	if (new == NULL)
 		return (0);
+	i = 0;
 	while (i < len - start)
 	{
 		*(new + i) = *(s + start + i);

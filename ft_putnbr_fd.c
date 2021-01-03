@@ -6,7 +6,7 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 20:22:17 by hyejung           #+#    #+#             */
-/*   Updated: 2020/12/28 20:33:18 by hyejung          ###   ########.fr       */
+/*   Updated: 2021/01/03 21:52:33 by jeonghyeo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	int		i;
 	char	c;
 
 	if (fd < 0)

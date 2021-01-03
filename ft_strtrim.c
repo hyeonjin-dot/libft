@@ -6,7 +6,7 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 22:10:41 by hyejung           #+#    #+#             */
-/*   Updated: 2020/12/27 14:40:56 by hyejung          ###   ########.fr       */
+/*   Updated: 2021/01/01 18:28:36 by jeonghyeo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (end > i && (check(s1[end], set, set_len) == 1))
 		end--;
 	new = (char*)malloc(sizeof(*s1) * (end - i + 1));
-	if (new == '\0')
+	if (new == NULL)
 		return (0);
 	while (i <= end)
 	{
