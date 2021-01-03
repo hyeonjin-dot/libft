@@ -6,7 +6,7 @@
 #    By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/30 15:52:06 by hyejung           #+#    #+#              #
-#    Updated: 2021/01/04 00:06:54 by jeonghyeo        ###   ########.fr        #
+#    Updated: 2021/01/04 00:28:14 by jeonghyeo        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,6 +71,12 @@ ${NAME}	:	${OBJS}
 .c.o	:
 	${CC} ${CFLAGS} -c  $< -o ${<:.c=.o}
 
+${OBJS}	:	${SRCS}
+	${CC} ${CFLAGS} ${SRCS}
+
+${OBJS_B}	:	${SRCS_B}
+	${CC} ${CFLAGS} ${SRCS_B}
+
 clean	:
 	${RM} ${OBJS}
 
@@ -79,7 +85,7 @@ fclean	:	clean
 
 re		:	fclean all
 
-bonus	:	${OBJS} ${OBJS_B}
-	${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${OBJS_B}
+bonus	:	fclean ${OBJS} ${OBJS_B}
+	ar rcs ${NAME} ${OBJS} ${OBJS_B}
 
 .PHONY	:	all clean fclean re bonus
