@@ -6,27 +6,27 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 18:40:24 by hyejung           #+#    #+#             */
-/*   Updated: 2020/12/22 19:16:42 by hyejung          ###   ########.fr       */
+/*   Updated: 2021/01/06 18:09:33 by hyejung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *fir, const void *sec, size_t num)
+int	ft_memcmp(const void *ptr1, const void *ptr2, size_t n)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < num)
+	while ((int)i < (int)n)
 	{
-		if (*(unsigned char *)fir == *(unsigned char *)sec)
+		if (*(unsigned char *)ptr1 == *(unsigned char *)ptr2)
 		{
 			i++;
-			fir++;
-			sec++;
+			ptr1++;
+			ptr2++;
 		}
 		else
-			return (*(unsigned char*)fir - *(unsigned char*)sec);
+			return (*(unsigned char*)ptr1 - *(unsigned char*)ptr2);
 	}
 	return (0);
 }

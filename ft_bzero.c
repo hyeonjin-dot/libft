@@ -6,7 +6,7 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 18:15:42 by hyejung           #+#    #+#             */
-/*   Updated: 2020/12/21 18:44:17 by hyejung          ###   ########.fr       */
+/*   Updated: 2021/01/06 15:29:41 by hyejung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	ft_bzero(void *s, size_t n)
 	size_t	i;
 
 	i = 0;
-	if (!s)
-		return ;
 	while (i < n)
 	{
 		*(char *)(s + i) = 0;

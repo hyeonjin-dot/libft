@@ -6,7 +6,7 @@
 /*   By: hyejung <hyejung@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 02:09:24 by hyejung           #+#    #+#             */
-/*   Updated: 2021/01/01 02:16:41 by hyejung          ###   ########.fr       */
+/*   Updated: 2021/01/09 15:59:40 by hyejung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (!lst || !new)
-		return ;
+	t_list	*tmp;
+
+	tmp = *lst;
 	if (!*lst)
 	{
 		*lst = new;
 		return ;
 	}
-	new->next = *lst->next;
-	*lst->next = new;
+	new->next = tmp->next;
+	tmp->next = new;
 	return ;
 }

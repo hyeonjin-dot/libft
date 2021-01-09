@@ -6,25 +6,28 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 18:13:59 by hyejung           #+#    #+#             */
-/*   Updated: 2021/01/01 18:29:02 by jeonghyeo        ###   ########.fr       */
+/*   Updated: 2021/01/09 20:46:57 by hyejung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-int		check(int n)
+int		check_itoa(int num)
 {
 	int		i;
 
 	i = 1;
-	if (n < 0)
+	if (num == -2147483647 - 1)
+		return (11);
+	if (num < 0)
 	{
 		i++;
-		n = -n;
+		num = -num;
 	}
-	while (n > 10)
+	while (num >= 10)
 	{
-		n = n / 10;
+		num = num / 10;
 		i++;
 	}
 	return (i);
@@ -33,26 +36,27 @@ int		check(int n)
 char	*ft_itoa(int n)
 {
 	int		i;
-	int		minus;
 	char	*new;
 
-	minus = (n < 0 ? -1 : 1);
-	i = check(n);
-	new = (char*)malloc(sizeof(char) * i);
-	if (new == NULL)
+	i = check_itoa(n);
+	if (!(new = (char*)malloc(sizeof(char) * (i + 1))))
 		return (0);
-	new[i] = '\0';
-	if (minus < 0)
+	new[i--] = '\0';
+	if (n == -2147483647 - 1)
+	{
+		new[i] = '8';
+		n = -214748364;
+		i--;
+	}
+	if (n < 0)
 	{
 		new[0] = '-';
 		n = -n;
 	}
-	i--;
-	while (n > 10)
+	while (n >= 10)
 	{
-		new[i] = (n % 10) + '0';
+		new[i--] = (n % 10) + '0';
 		n = n / 10;
-		i--;
 	}
 	new[i] = n + '0';
 	return (new);

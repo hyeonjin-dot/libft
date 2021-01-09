@@ -6,7 +6,7 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 19:40:31 by hyejung           #+#    #+#             */
-/*   Updated: 2021/01/01 18:27:53 by jeonghyeo        ###   ########.fr       */
+/*   Updated: 2021/01/07 17:58:14 by hyejung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ char	*ft_strdup(const char *str)
 		i++;
 	}
 	*(new + i) = '\0';
-	free(new);
 	return (new);
 }

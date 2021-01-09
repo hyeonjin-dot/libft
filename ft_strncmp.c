@@ -6,7 +6,7 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 18:20:26 by hyejung           #+#    #+#             */
-/*   Updated: 2020/12/23 18:29:00 by hyejung          ###   ########.fr       */
+/*   Updated: 2021/01/07 15:16:55 by hyejung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ int	ft_strncmp(const char *str1, const char *str2, size_t n)
 
 	i = 0;
 	k = 0;
-	while (i < n)
+	while (i < n - 1 && str1[k] && str2[k])
 	{
-		if ((char)str1[k] == (char)str2[k])
+		if ((unsigned char)str1[k] == (unsigned char)str2[k])
 		{
 			i++;
 			k++;
 		}
 		else
-			return ((char)str1[k] - (char)str2[k]);
+			break ;
 	}
-	return (0);
+	return ((unsigned char)str1[k] - (unsigned char)str2[k]);
 }

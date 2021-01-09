@@ -6,7 +6,7 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 18:58:44 by hyejung           #+#    #+#             */
-/*   Updated: 2020/12/22 17:50:49 by hyejung          ###   ########.fr       */
+/*   Updated: 2021/01/06 15:44:24 by hyejung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 	{
 		*(char*)(dest + i) = *(char*)(src + i);
 		if (*(char*)(src + i) == (char)c)
-			return (dest);
+			return (dest + i + 1);
 		i++;
 	}
 	return (0);

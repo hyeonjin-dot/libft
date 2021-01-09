@@ -6,16 +6,13 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 22:31:53 by hyejung           #+#    #+#             */
-/*   Updated: 2020/12/23 22:33:08 by hyejung          ###   ########.fr       */
+/*   Updated: 2021/01/07 14:32:57 by hyejung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	isascii(int c)
+int	ft_isascii(int c)
 {
-	if (c >= 0 && c <= 127)
-		return (c);
-	else
-		return (0);
+	return (c >= 0 && c <= 127);
 }

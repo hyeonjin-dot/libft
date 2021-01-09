@@ -6,7 +6,7 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 15:43:51 by hyejung           #+#    #+#             */
-/*   Updated: 2020/12/30 15:47:13 by hyejung          ###   ########.fr       */
+/*   Updated: 2021/01/05 21:10:28 by hyejung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_lstsize(t_list *lst)
 	int	i;
 
 	i = 0;
-	while (lst != '\0')
+	while (lst)
 	{
 		lst = lst->next;
 		i++;

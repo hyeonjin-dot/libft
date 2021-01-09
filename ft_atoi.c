@@ -6,7 +6,7 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 18:30:54 by hyejung           #+#    #+#             */
-/*   Updated: 2020/12/23 21:30:01 by hyejung          ###   ########.fr       */
+/*   Updated: 2021/01/07 17:56:56 by hyejung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,23 @@ int	ft_atoi(const char *str)
 	int	i;
 	int	minus;
 	int	num;
+	int	count;
 
 	i = 0;
-	minus = 1;
 	num = 0;
+	count = 0;
 	while ((str[i] != '\0') && (checkspace((char)str[i]) == 1))
 		i++;
-	if ((char)str[i] == '-' || (char)str[i] == '+')
-	{
-		if ((char)str[i] == '-')
-			minus = -minus;
+	minus = ((char)str[i] == '-') ? -1 : 1;
+	if ((char)str[i] == '+' || minus == -1)
 		i++;
-	}
-	while ((char)str[i] != '\0')
+	while ((char)str[i] >= '0' && (char)str[i] <= '9' && str[i])
 	{
-		if ((char)str[i] >= '0' && (char)str[i] <= '9')
-			num = num * 10 + (char)str[i] - 48;
-		else
-			break ;
-		i++;
+		num = (num * 10) + ((char)str[i++] - '0');
+		count++;
 	}
-	return (minus * num);
+	if (count >= 20)
+		return ((minus == 1) ? -1 : 0);
+	else
+		return (minus * num);
 }

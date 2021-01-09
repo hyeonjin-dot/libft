@@ -6,51 +6,64 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 14:02:27 by hyejung           #+#    #+#             */
-/*   Updated: 2020/12/28 21:51:01 by hyejung          ###   ########.fr       */
+/*   Updated: 2021/01/09 22:48:54 by hyejung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	check(char const *s, char c)
+int		check(char const *s, char c)
 {
-	size_t	i;
+	int		i;
+	int		j;
 
 	i = 0;
-	while (!*s)
+	j = 0;
+	while (s[i] != '\0')
 	{
-		if (*s == c)
-			i++;
-		s++;
+		if (s[i] != c && (s[i + 1] == c || !s[i + 1]))
+			j++;
+		i++;
 	}
-	return (i);
+	return (j);
+}
+
+char	**makemalloc(char const *s, char **new, char c)
+{
+	size_t	k;
+	size_t	i;
+	size_t	z;
+
+	k = 0;
+	i = 0;
+	z = 0;
+	while (z <= ft_strlen(s) && s[k])
+	{
+		new[i] = (char*)malloc(sizeof(char) * 100);
+		if (s[k] == c)
+		{
+			if (s[k - 1] != c && k > 0)
+				ft_strlcpy(new[i++], (s + z), (k - z + 1));
+			z = k + 1;
+		}
+		if (s[k] != c && s[k + 1] == '\0')
+			ft_strlcpy(new[i++], (s + z), (k - z + 2));
+		k++;
+		if (new[i] == NULL)
+			free(new[i]);
+	}
+	new[i] = NULL;
+	return (new);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	count;
-	size_t	i;
-	size_t	k;
-	size_t	z;
 	char	**new;
 
-	i = 0;
-	k = 0;
-	z = 0;
+	if (!s)
+		return (NULL);
 	if (!(new = (char**)malloc(sizeof(char*) * (check(s, c) + 2))))
 		return (0);
-	count = 0;
-	while (z <= ft_strlen(s))
-	{
-		if (s[k] == c)
-		{
-			new[i] = (char*)malloc(sizeof(char) * (count++));
-			ft_strlcpy(new[i], (s + z), (k - z));
-			z = k + 1;
-			i++;
-		}
-		k++;
-	}
-	free(new);
+	new = makemalloc(s, new, c);
 	return (new);
 }
