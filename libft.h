@@ -6,7 +6,7 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 18:14:13 by hyejung           #+#    #+#             */
-/*   Updated: 2021/01/06 19:38:10 by hyejung          ###   ########.fr       */
+/*   Updated: 2021/01/11 16:19:20 by jeonghyeo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int					ft_tolower(int c);
 void				*ft_calloc(size_t n, size_t size);
 char				*ft_strdup(const char *str);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
+char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s1, char const *set);
 char				**ft_split(char const *s, char c);
 char				*ft_itoa(int n);

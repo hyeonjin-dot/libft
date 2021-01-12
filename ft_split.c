@@ -6,7 +6,7 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 14:02:27 by hyejung           #+#    #+#             */
-/*   Updated: 2021/01/09 22:48:54 by hyejung          ###   ########.fr       */
+/*   Updated: 2021/01/12 19:45:31 by hyejung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,14 @@ int		check(char const *s, char c)
 	j = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] != c && (s[i + 1] == c || !s[i + 1]))
+		if (s[i] != c && s[i])
+		{
 			j++;
-		i++;
+			while (s[i] != c && s[i])
+				i++;
+		}
+		else if (s[i])
+			i++;
 	}
 	return (j);
 }
@@ -31,28 +36,31 @@ int		check(char const *s, char c)
 char	**makemalloc(char const *s, char **new, char c)
 {
 	size_t	k;
-	size_t	i;
 	size_t	z;
+	int		i;
 
 	k = 0;
 	i = 0;
-	z = 0;
-	while (z <= ft_strlen(s) && s[k])
+	while (s[k])
 	{
-		new[i] = (char*)malloc(sizeof(char) * 100);
-		if (s[k] == c)
+		if (s[k] != c)
 		{
-			if (s[k - 1] != c && k > 0)
-				ft_strlcpy(new[i++], (s + z), (k - z + 1));
-			z = k + 1;
+			z = k;
+			while (s[k] != c && s[k] != 0)
+				k++;
+			if (!(new[i] = (char*)malloc(sizeof(char) * (k - z + 1))))
+			{
+				while (i--)
+					free(new[i]);
+				free(new);
+				return (0);
+			}
+			ft_strlcpy(new[i++], (s + z), (k - z + 1));
 		}
-		if (s[k] != c && s[k + 1] == '\0')
-			ft_strlcpy(new[i++], (s + z), (k - z + 2));
-		k++;
-		if (new[i] == NULL)
-			free(new[i]);
+		else
+			k++;
 	}
-	new[i] = NULL;
+	new[i] = 0;
 	return (new);
 }
 
@@ -62,7 +70,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	if (!(new = (char**)malloc(sizeof(char*) * (check(s, c) + 2))))
+	if (!(new = (char**)malloc(sizeof(char*) * (check(s, c) + 1))))
 		return (0);
 	new = makemalloc(s, new, c);
 	return (new);

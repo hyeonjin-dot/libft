@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/30 15:52:06 by hyejung           #+#    #+#              #
-#    Updated: 2021/01/08 22:30:02 by hyejung          ###   ########.fr        #
+#    Updated: 2021/01/11 19:19:47 by hyejung          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,24 +62,27 @@ SRCS_B	=	ft_lstnew.c\
 			ft_lstiter.c\
 			ft_lstmap.c
 
-OBJS	=	${SRCS:.c=.o}
+OBJS	=	$(SRCS:.c=.o)
 
-OBJS_B	=	${SRCS_B:.c=.o}
+OBJS_B	=	$(SRCS_B:.c=.o)
 
-all		:	${NAME}
+all		:	$(NAME)
 
-${NAME}	:	${OBJS}
-	${LIB} ${NAME} ${OBJS}
+$(NAME)	:	$(OBJS)
+	$(LIB) $(NAME) $(OBJS)
+
+.c.o	:
+	$(CC) $(CFLAGS) -I $(INC) -c $< -o $(<:.c=.o)
 
 clean	:
-	${RM} ${OBJS} ${OBJS_B}
+	$(RM) $(OBJS) $(OBJS_B)
 
 fclean	:	clean
-	${RM} ${NAME}
+	$(RM) $(NAME)
 
 re		:	fclean all
 
-bonus	:	${OBJS} ${OBJS_B}
-	${LIB} ${NAME} ${OBJS} ${OBJS_B}
+bonus	:	$(OBJS) $(OBJS_B)
+	$(LIB) $(NAME) $(OBJS) $(OBJS_B)
 
 .PHONY	:	all clean fclean re bonus
