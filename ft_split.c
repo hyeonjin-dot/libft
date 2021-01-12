@@ -6,7 +6,7 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 14:02:27 by hyejung           #+#    #+#             */
-/*   Updated: 2021/01/12 19:45:31 by hyejung          ###   ########.fr       */
+/*   Updated: 2021/01/12 21:35:30 by jeonghyeo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,20 @@ int		check(char const *s, char c)
 	return (j);
 }
 
+void	letfree(char **new, int i)
+{
+	int	j;
+
+	j = 0;
+	while (j <= i)
+	{
+		free(new[j]);
+		j++;
+	}
+	free(new);
+	return ;
+}
+
 char	**makemalloc(char const *s, char **new, char c)
 {
 	size_t	k;
@@ -50,9 +64,7 @@ char	**makemalloc(char const *s, char **new, char c)
 				k++;
 			if (!(new[i] = (char*)malloc(sizeof(char) * (k - z + 1))))
 			{
-				while (i--)
-					free(new[i]);
-				free(new);
+				letfree(new, i);
 				return (0);
 			}
 			ft_strlcpy(new[i++], (s + z), (k - z + 1));

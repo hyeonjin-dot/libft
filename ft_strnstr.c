@@ -6,7 +6,7 @@
 /*   By: hyejung <hyejung@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 17:44:01 by hyejung           #+#    #+#             */
-/*   Updated: 2021/01/12 20:09:16 by hyejung          ###   ########.fr       */
+/*   Updated: 2021/01/12 21:30:48 by jeonghyeo        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strnstr(const char *big, const char *lit, size_t len)
 		return ((char*)big);
 	while (i <= len && *big)
 	{
-		if(!(ft_strncmp(big, lit, i)))
+		if (!(ft_strncmp(big, lit, i)))
 			return ((char*)big);
 		big++;
 		len--;
